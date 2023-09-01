@@ -1,0 +1,15 @@
+{
+    "name": "hamza/tp-pdo",
+    "autoload": {
+        "psr-4": {
+            "hamza\\pdo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "CherHamza",
+            "email": "hamzacheracher1@hotmail.fr"
+        }
+    ],
+    "require": {}
+}

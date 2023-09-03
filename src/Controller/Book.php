@@ -6,29 +6,37 @@ use hamza\pdo\Kernel\Views;
 
 
 class Book extends AbstractController {
-    public function index(){
+    public function index()
     {
-        
         $view = new Views();
-        $books= Books::getAll();
-        $id = Books::getbyId(1);
+        
+        $perPage = 10; // Nombre d'éléments par page
+        
+        $totalBooks = count(Books::getAll()); // Nombre total de livres
+        
+        $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Numéro de page actuel
+        
+        $totalPages = ceil($totalBooks / $perPage); // Nombre total de pages
+        
+       
+        
+        $books = Books::getAll();
+    
         $view->setHead('head.html');
         $view->setHeader('header.html');
         $view->setMain('book.php');
         $view->setFooter('footer.html');
-
-
+    
         $view->render([
             'flash' => $this->getFlashMessage(),
-            'titlePage' => 'Page HomeController',
-            'books'=>$books,
-            // 'id'=>$id
+            'titlePage' => 'Page BookController',
+            'books' => $books,
+            'currentPage' => $currentPage,
+            'totalPages' => $totalPages,
+            'perPage' => $perPage,
         ]);
     }
     
-
-
-}
     public function delete()
     {
        $result = false;

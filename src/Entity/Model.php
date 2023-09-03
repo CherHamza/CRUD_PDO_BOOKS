@@ -80,19 +80,7 @@ class Model  {
 
 
 
-    // public static function update(int $id, array $data)
-    // {
-    //     $db = Database::getInstance();
     
-    //     $stmt = $db->prepare("UPDATE books SET title = :title, author = :author, type = :type, description = :description WHERE id = :id");
-    //     $stmt->bindParam(':title', $data['title']);
-    //     $stmt->bindParam(':author', $data['author']);
-    //     $stmt->bindParam(':type', $data['type']);
-    //     $stmt->bindParam(':description', $data['description']);
-    //     $stmt->bindParam(':id', $id);
-    
-    //     return $stmt->execute();
-    // }
     
     public static function update(int $id, array $data)
     {

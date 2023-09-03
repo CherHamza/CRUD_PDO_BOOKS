@@ -7,7 +7,7 @@ use hamza\pdo\Kernel\Model;
 
 class Views
 {
-    //main = main
+
     private string $main;
     private string $head;
     private string $header;

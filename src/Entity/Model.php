@@ -36,11 +36,17 @@ class Model  {
     
 
 
-    public static function getAll()
-    {
-        $sql = "select * from " . self::getEntityName();
-        return self::Execute($sql)->fetchAll(PDO::FETCH_CLASS, self::getClassName());
+    public static function getAll(int $limit = null, int $offset = 0)
+{
+    $db = DataBase::getInstance();
+    $sql = "SELECT * FROM " . self::getEntityName() . " ORDER BY title";
+    
+    if (!is_null($limit)) {
+        $sql .= " LIMIT $limit OFFSET $offset";
     }
+
+    return self::Execute($sql)->fetchAll(PDO::FETCH_CLASS, self::getClassName());
+}
 
 
 

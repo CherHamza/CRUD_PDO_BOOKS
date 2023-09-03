@@ -18,9 +18,9 @@ class Book extends AbstractController {
         
         $totalPages = ceil($totalBooks / $perPage); // Nombre total de pages
         
-       
+        $offset = ($currentPage - 1) * $perPage; // Calcul de l'offset
         
-        $books = Books::getAll();
+        $books = Books::getAll($perPage, $offset); // Obtenir les livres avec pagination
     
         $view->setHead('head.html');
         $view->setHeader('header.html');
@@ -37,21 +37,7 @@ class Book extends AbstractController {
         ]);
     }
     
-    public function delete()
-    {
-       $result = false;
-       $this->setFlashMessage('undefined Value', 'ERROR');
-       if(isset($_GET['id'])){
-        $result =  Books::delete($_GET["id"]);
-
-       }
-       if($result){
-        $this->setFlashMessage("The book has been deleted", "SUCCESS");
-       }
-       $this->index();
-       
-        
-    }
+    
 
     public function edit()
 {  
